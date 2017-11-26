@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/Paikz/placeholder-client.svg?branch=master)](https://travis-ci.org/Paikz/placeholder-client)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Paikz/placeholder-client/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Paikz/placeholder-client/?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/Paikz/placeholder-client/badge.svg?branch=master)](https://coveralls.io/github/Paikz/placeholder-client?branch=master)
 
 # PlaceholderProject
 
