@@ -7,6 +7,10 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test -cc",
+    "test:ci": "ng test --browser ChromeHeadlessCI -cc -sr",
+    "test-node9": "docker-compose run node9",
+    "test-node8": "docker-compose run node8",
+    "test-node6": "docker-compose run node6",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
