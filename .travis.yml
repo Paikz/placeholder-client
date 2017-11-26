@@ -20,7 +20,8 @@ before_install:
 before_script:
     - npm install
 
-script: karma start karma.conf.js --single-run
+script:
+    - npm test
 
 after_script:
     - npm run report-coveralls
