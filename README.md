@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Paikz/placeholder-client.svg?branch=master)](https://travis-ci.org/Paikz/placeholder-client)
+
 # PlaceholderProject
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.1.
