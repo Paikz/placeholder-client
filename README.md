@@ -20,7 +20,7 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 ## Running tests with different node versions in docker
 
-Run following commands to run tests using specified node versions via docker:
+Run following commands to run tests using specified node versions via docker:  
 `npm test-node9`  
 `npm test-node8`  
 `npm test-node6`  
