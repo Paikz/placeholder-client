@@ -1,0 +1,26 @@
+<ng-container *ngIf='!connected'>
+    <h1 id='title'>/WS - CHAT/</h1>
+    <div class="top-bar">
+        <input [(ngModel)]='username' id="username-input" placeholder="  Username" type="text">
+        <input id="connect" class="btn" type="button" value="Connect" (click)="onConnection()">
+    </div>
+</ng-container>
+
+<ng-container *ngIf='connected'>
+    <h1 id='title'>/WS - CHAT/</h1>
+    <div class="chat-container">
+        <div class="chat-window" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+            <ng-container *ngFor="let msg of messages">
+                <div class="message {{msg.username == username ? 'client' : 'server'}}">
+                    <p>{{ msg.timestamp }} - {{ msg.username }}: {{ msg.message }}</p>
+                </div>
+            </ng-container>
+        </div>
+
+        <div class="bar bottom-bar">
+            <input [(ngModel)]='msg' id="message-input" placeholder="  Send message..." type="text">
+            <input id="send" class="btn" type="button" value="Send" (click)='onSend()'>
+            <input id="disconnect" class="btn" type="button" value="Disconnect" (click)='onClose()'>
+        </div>
+    </div>
+</ng-container>
