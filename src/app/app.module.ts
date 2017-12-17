@@ -8,12 +8,17 @@ import { FormsModule }              from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ChatComponent } from './chat/chat.component';
+import { DbTestComponent } from './db-test/db-test.component';
+
+//Services
+import { DbService } from './services/db.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ChatComponent
+    ChatComponent,
+    DbTestComponent
   ],
   imports: [
     BrowserModule,
@@ -27,10 +32,14 @@ import { ChatComponent } from './chat/chat.component';
         {
             path: 'chat',
             component: ChatComponent
+        },
+        {
+          path: 'dbtest',
+          component: DbTestComponent
         }
     ])
   ],
-  providers: [],
+  providers: [DbService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
