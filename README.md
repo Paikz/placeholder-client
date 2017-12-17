@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/Paikz/placeholder-client.svg?branch=master)](https://travis-ci.org/Paikz/placeholder-client)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Paikz/placeholder-client/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Paikz/placeholder-client/?branch=master)
-[![Coverage [![codecov](https://codecov.io/gh/Paikz/placeholder-client/branch/master/graph/badge.svg)](https://codecov.io/gh/Paikz/placeholder-client)  
+[![codecov](https://codecov.io/gh/Paikz/placeholder-client/branch/master/graph/badge.svg)](https://codecov.io/gh/Paikz/placeholder-client)
 
 # PlaceholderProject
 
