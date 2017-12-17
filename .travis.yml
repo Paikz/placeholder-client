@@ -25,7 +25,7 @@ script:
     - npm test
 
 after_script:
-    - npm run report-coveralls
+    - npm run report-codecov
 
 notifications:
     email: false
