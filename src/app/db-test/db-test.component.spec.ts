@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpModule }                       from '@angular/http';
 
+import { DbService }       from '../services/db.service';
 import { DbTestComponent } from './db-test.component';
 
 describe('DbTestComponent', () => {
@@ -8,7 +10,9 @@ describe('DbTestComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DbTestComponent ]
+      imports: [ HttpModule ],
+      declarations: [ DbTestComponent ],
+      providers: [ DbService ]
     })
     .compileComponents();
   }));
