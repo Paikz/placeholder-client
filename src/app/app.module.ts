@@ -1,28 +1,36 @@
-import { BrowserModule }            from '@angular/platform-browser';
-import { RouterModule }             from '@angular/router';
-import { NgModule }                 from '@angular/core';
-import { HttpModule }               from '@angular/http';
-import { FormsModule }              from '@angular/forms';
-import { ReactiveFormsModule }      from '@angular/forms';
+import { BrowserModule }                            from '@angular/platform-browser';
+import { RouterModule }                             from '@angular/router';
+import { NgModule }                                 from '@angular/core';
+import { HttpModule, Http, RequestOptions }         from '@angular/http';
+import { FormsModule }                              from '@angular/forms';
+import { ReactiveFormsModule }                      from '@angular/forms';
+
+//Custom modules
+import { AuthHttp, AuthConfig } from 'angular2-jwt';
+
+//Guards
+import { AuthGuard }            from './guards/auth.guard';
 
 //Services
-import { DbService } from './services/db.service';
-import { UserService } from './services/user.service';
+import { UserService }          from './services/user.service';
+import { AuthService }          from './services/auth.service';
 
 //Components
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { ChatComponent } from './chat/chat.component';
-import { DbTestComponent } from './db-test/db-test.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { AppComponent }         from './app.component';
+import { HomeComponent }        from './home/home.component';
+import { ChatComponent }        from './chat/chat.component';
+import { LoginComponent }       from './login/login.component';
+import { RegisterComponent }    from './register/register.component';
+
+export function authHttpServiceFactory(http: Http, options: RequestOptions) {
+  return new AuthHttp(new AuthConfig(), http, options);
+}
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ChatComponent,
-    DbTestComponent,
     LoginComponent,
     RegisterComponent
   ],
@@ -38,11 +46,8 @@ import { RegisterComponent } from './register/register.component';
         },
         {
             path: 'chat',
-            component: ChatComponent
-        },
-        {
-          path: 'dbtest',
-          component: DbTestComponent
+            component: ChatComponent,
+            canActivate: [AuthGuard]
         },
         {
           path: 'login',
@@ -54,7 +59,16 @@ import { RegisterComponent } from './register/register.component';
         }
     ])
   ],
-  providers: [DbService, UserService],
+  providers: [
+      UserService,
+      AuthService,
+      AuthGuard,
+      {
+          provide: AuthHttp,
+          useFactory: authHttpServiceFactory,
+          deps: [Http, RequestOptions]
+      }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
