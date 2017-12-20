@@ -1,52 +1,53 @@
-<div class="container">
-    <h1>Register Form</h1>
-    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input [(ngModel)]="user.email"
-               name="email"
-               type="email"
-               class="form-control"
-               id="email"
-               required
-               #emailTemp="ngModel"
-               pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
-        <div [hidden]="emailTemp.valid || emailTemp.pristine"
-            class="alert alert-danger">
-            <div  *ngIf="emailTemp.errors && emailTemp.errors.pattern">
-                Email is invalid
-            </div>
-         </div>
-      </div>
+<div class="background-img">
+    <div class="container">
+        <div class="register-box">
+            <p>Register For Scenery</p>
+            <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+              <div class="form-group">
+                <input [(ngModel)]="user.email"
+                       name="email"
+                       type="email"
+                       class="form-control"
+                       id="email"
+                       required
+                       #emailTemp="ngModel"
+                       placeholder="Email"
+                       pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                <div [hidden]="emailTemp.valid || emailTemp.pristine"
+                    class="alert alert-danger">
+                    <div  *ngIf="emailTemp.errors && emailTemp.errors.pattern">
+                        Email is invalid
+                    </div>
+                 </div>
+              </div>
 
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input [(ngModel)]="user.username" name="username" type="username" class="form-control" id="username" required #usernameTemp="ngModel">
-        <div [hidden]="usernameTemp.valid || usernameTemp.pristine"
-            class="alert alert-danger">
-            Username is required
-         </div>
-      </div>
+              <div class="form-group">
+                <input [(ngModel)]="user.username" name="username" type="username" class="form-control" id="username" placeholder="Username" required #usernameTemp="ngModel">
+                <div [hidden]="usernameTemp.valid || usernameTemp.pristine"
+                    class="alert alert-danger">
+                    Username is required
+                 </div>
+              </div>
 
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input [(ngModel)]="user.password" name="password" type="password" class="form-control" id="password" required #passwordTemp="ngModel">
-        <div [hidden]="passwordTemp.valid || passwordTemp.pristine"
-            class="alert alert-danger">
-            Password is required
-         </div>
-      </div>
+              <div class="form-group">
+                <input [(ngModel)]="user.password" name="password" type="password" class="form-control" id="password" placeholder="Password" required #passwordTemp="ngModel">
+                <div [hidden]="passwordTemp.valid || passwordTemp.pristine"
+                    class="alert alert-danger">
+                    Password is required
+                 </div>
+              </div>
 
-      <div class="form-group">
-        <label for="confPassword">Confirm Password</label>
-        <input [(ngModel)]="user.confPassword" name="confPassword" type="password" class="form-control" id="confPassword" required #confPasswordTemp="ngModel">
-        <div [hidden]="confPasswordTemp.valid || confPasswordTemp.pristine"
-            class="alert alert-danger">
-            Confirmation for password is required
-         </div>
-      </div>
+              <div class="form-group">
+                <input [(ngModel)]="user.confPassword" name="confPassword" type="password" class="form-control" id="confPassword" placeholder="Confirm Password" required #confPasswordTemp="ngModel">
+                <div [hidden]="confPasswordTemp.valid || confPasswordTemp.pristine"
+                    class="alert alert-danger">
+                    Confirmation for password is required
+                 </div>
+              </div>
 
-      <button type="submit" class="btn btn-success" (click)="createUser(); userForm.reset()" [disabled]="!userForm.form.valid">Register</button>
-
-    </form>
+              <button type="submit" class="btn btn-success" (click)="createUser(); userForm.reset()" [disabled]="!userForm.form.valid">Register</button>
+              <a class="routerLink" routerLink="/login"> Already registered? Click here to log in!</a>
+            </form>
+        </div>
+    </div>
 </div>
