@@ -21,6 +21,7 @@ import { HomeComponent }        from './home/home.component';
 import { ChatComponent }        from './chat/chat.component';
 import { LoginComponent }       from './login/login.component';
 import { RegisterComponent }    from './register/register.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig(), http, options);
@@ -32,7 +33,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     HomeComponent,
     ChatComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     RouterModule.forRoot([
         {
             path: '',
-            component: HomeComponent
+            component: HomeComponent,
+            canActivate: [AuthGuard]
         },
         {
             path: 'chat',

@@ -9,7 +9,7 @@
 }
 
 .container {
-	max-width: 30%;
+	width: 30%;
 	background: rgba(0, 0, 0, 0.7);
 	margin: 0 auto;
 	border-radius: 4px;
@@ -63,5 +63,26 @@
 	.alert {
 		font-family: "Open Sans", sans-serif;
 		color: #fff;
+	}
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+	.container {
+		width: 80%;
+	}
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+	.container {
+		width: 65%;
+	}
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+	.container {
+		width: 65%;
 	}
 }
