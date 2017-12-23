@@ -3,11 +3,12 @@
 //@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css');
 
 @import "../node_modules/normalize.css/normalize.css";
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto:100,300,400');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto:100,300,400|Damion');
 
 html,body {
     height: 100%;
-    margin:0; padding:0;
+    margin: 40px 0 0 0;
+    padding:0;
 }
 
 input, button {
@@ -47,4 +48,31 @@ input, button {
 /* selected link */
 .routerLink:active {
     color: #fff;
+}
+
+.routerLinkReverse {
+    color: #000;
+    text-decoration: none;
+    font-family: "Open Sans", sans-serif;
+}
+
+/* unvisited link */
+.routerLinkReverse:link {
+    color: #000;
+}
+
+/* visited link */
+.routerLinkReverse:visited {
+    color: #000;
+}
+
+/* mouse over link */
+.routerLinkReverse:hover {
+    color: #71c9f2;
+    text-decoration: underline;
+}
+
+/* selected link */
+.routerLinkReverse:active {
+    color: #000;
 }

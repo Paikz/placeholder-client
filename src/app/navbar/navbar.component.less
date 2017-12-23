@@ -1,32 +1,98 @@
-body {margin:0;}
+.container {
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+    height: 60px;
+    border-bottom: 1px solid rgba(0,0,0,.0975);
     overflow: hidden;
-    background-color: #333;
     position: fixed;
     top: 0;
     width: 100%;
+    background-color: #fff;
+
+    .navbar {
+
+        font-family: "Roboto", sans-serif;
+        font-weight: 400;
+        font-size: 20px;
+        width: 70%;
+        margin: 0 auto;
+
+        a {
+            display: block;
+            text-align: center;
+            margin: 18px 6px;
+        }
+
+        .right-side {
+            a, input, i {
+                float: right;
+            }
+
+            i {
+                font-size: 1.5em;
+                color: rgba(0,0,0,.6);
+            }
+
+            .search {
+                border: 1px solid rgba(0,0,0,.2);
+                border-radius: 3px;
+                margin: 18px 16px;
+                font-size: 1em;
+                font-family: "Open Sans", FontAwesome, sans-serif;
+                font-weight: 100;
+                color: rgba(0,0,0,.8);
+            }
+
+            .search::placeholder {
+                font-size: 0.7em;
+                font-weight: 300;
+                padding-left: 5px;
+                color: rgba(0,0,0,.4);
+            }
+        }
+
+        .left-side {
+            a {
+                float: left;
+            }
+
+            .logo {
+                text-decoration: none;
+                color: rgba(0,0,0,.8);
+                font-size: 2em;
+                font-family: "Damion",cursive, sans-serif;
+                margin: 6px 6px;
+            }
+        }
+
+    }
 }
 
-li {
-    float: left;
+/* Landscape phones and down */
+@media (max-width: 480px) {
+    .container {
+        .navbar {
+            .right-side {
+                float: left;
+
+                .search {
+                    display: none;
+                }
+            }
+        }
+	}
 }
 
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+	.container {
+        .navbar {
+            .right-side {
+                float: left;
 
-li a:hover:not(.active) {
-    background-color: #111;
-}
-
-.active {
-    background-color: #4CAF50;
+                .search {
+                    display: none;
+                }
+            }
+        }
+	}
 }
