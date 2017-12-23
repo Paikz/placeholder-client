@@ -4,6 +4,7 @@ import { UserService }       from '../services/user.service';
 import { RegisterComponent } from './register.component';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
 import { HttpModule, Http, RequestOptions } from '@angular/http';
+import { RouterTestingModule } from '@angular/router/testing';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig(), http, options);
@@ -15,7 +16,7 @@ describe('RegisterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, HttpModule],
+      imports: [FormsModule, HttpModule, RouterTestingModule],
       declarations: [ RegisterComponent ],
       providers: [UserService,
       {
