@@ -2,7 +2,7 @@
     <div class="container">
         <div class="login-box">
             <p>Scenery</p>
-            <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+            <form #loginForm="ngForm">
 
               <div class="form-group">
                 <input [(ngModel)]="credentials.username" name="username" type="text" placeholder="Username" class="form-control" id="username" required #usernameTemp="ngModel">

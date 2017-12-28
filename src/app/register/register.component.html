@@ -2,7 +2,7 @@
     <div class="container">
         <div class="register-box">
             <p>Register For Scenery</p>
-            <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+            <form #userForm="ngForm">
               <div class="form-group">
                 <input [(ngModel)]="user.email"
                        name="email"

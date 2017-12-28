@@ -2,18 +2,24 @@ import { Injectable }               from '@angular/core';
 import { Http, URLSearchParams }    from '@angular/http';
 import { AppSettings }              from '../appSettings';
 import { AuthHttp, JwtHelper }      from 'angular2-jwt';
+import { AuthService }              from './auth.service';
 
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class UserService {
 
-    jwtHelper: JwtHelper = new JwtHelper();
+    constructor(private authHttp: AuthHttp, private http: Http, private authService: AuthService) { }
 
-    constructor(private authHttp: AuthHttp, private http: Http) { }
+    getUser(username: string): Promise<any[]> {
+        return this.authHttp.get(AppSettings.API_ENDPOINT+`/users/${username}`)
+            .toPromise()
+            .then( response => response.json())
+            .catch(this.handleError);
+    }
 
-    getUsers(): Promise<any[]> {
-        return this.authHttp.get(AppSettings.API_ENDPOINT+'/users')
+    getPosts(username: string): Promise<any[]> {
+        return this.authHttp.get(AppSettings.API_ENDPOINT+`/posts/${username}`)
             .toPromise()
             .then( response => response.json())
             .catch(this.handleError);
@@ -40,9 +46,6 @@ export class UserService {
             .toPromise()
             .then( response => {
                 localStorage.setItem('token', response.json().token);
-                localStorage.setItem('user', JSON.stringify(this.jwtHelper.decodeToken(response.json().token)));
-                //Get values from localstorage
-                //console.log(JSON.parse(localStorage.getItem("user")).username);
                 console.log("Token stored in localstorage");
             })
             .catch(this.handleError);

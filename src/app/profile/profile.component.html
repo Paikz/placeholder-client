@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+<div class="main-container">
+    <div class="profile-header">
+        <img *ngIf='avatarUrl' [src]='avatarUrl'>
+        <h1>{{user.username}}</h1>
+        <p>{{user.email}}</p>
+        <!-- Upload Image -->
+        <label for="image-upload" class="custom-file-upload">
+             <i class="fa fa-cloud-upload"></i> <span>Upload Image</span>
+        </label>
+        <input id="image-upload" type="file" (change)="postChange($event)" placeholder="Upload Post" accept=".png,.jpg" name="post">
+
+        <!-- Change Avatar -->
+        <label for="avatar-upload" class="custom-file-upload">
+             <i class="fa fa-cloud-upload"></i> <span>Change Avatar</span>
+        </label>
+        <input id="avatar-upload" type="file" (change)="avatarChange($event)" placeholder="Upload Avatar" accept=".png,.jpg" name="avatar">
+
+    </div>
+    <div class="gallery">
+        <div class="flex-image" *ngFor='let img of postUrls'>
+            <img *ngIf="img" [src]='img'>
+        </div>
+    </div>
+ </div>

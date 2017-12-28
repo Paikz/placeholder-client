@@ -14,6 +14,7 @@ import { AuthGuard }            from './guards/auth.guard';
 //Services
 import { UserService }          from './services/user.service';
 import { AuthService }          from './services/auth.service';
+import { ContentService }          from './services/content.service';
 
 //Components
 import { AppComponent }         from './app.component';
@@ -21,10 +22,13 @@ import { HomeComponent }        from './home/home.component';
 import { ChatComponent }        from './chat/chat.component';
 import { LoginComponent }       from './login/login.component';
 import { RegisterComponent }    from './register/register.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent }      from './navbar/navbar.component';
+import { ProfileComponent }     from './profile/profile.component';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
-  return new AuthHttp(new AuthConfig(), http, options);
+  return new AuthHttp(new AuthConfig({
+        tokenGetter: (() => localStorage.getItem('token')),
+  }), http, options);
 }
 
 @NgModule({
@@ -34,7 +38,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     ChatComponent,
     LoginComponent,
     RegisterComponent,
-    NavbarComponent
+    NavbarComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +64,15 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
         {
           path: 'register',
           component: RegisterComponent
+        },
+        {
+            path: ':username',
+            component: ProfileComponent,
+            canActivate: [AuthGuard]
+        },
+        {
+            path: '**',
+            redirectTo: ''
         }
     ])
   ],
@@ -66,6 +80,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
       UserService,
       AuthService,
       AuthGuard,
+      ContentService,
       {
           provide: AuthHttp,
           useFactory: authHttpServiceFactory,
