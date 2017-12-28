@@ -73,7 +73,7 @@ export class ProfileComponent implements OnInit {
             this.contentService.uploadPost(fileList, "My desc")
                 .then(res => {
                     console.log("Upload successful.");
-                    this.getUser();
+                    this.getPosts();
                 })
                 .catch(err => console.log(err));
         }
