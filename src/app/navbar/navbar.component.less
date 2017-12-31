@@ -67,10 +67,11 @@
     }
 }
 
-/* Landscape phones and down */
-@media (max-width: 480px) {
+@media (min-width: 1px) and (max-width: 480px){
     .container {
         .navbar {
+            width: 100%;
+            margin: 0;
             .right-side {
                 float: left;
 
@@ -82,16 +83,27 @@
 	}
 }
 
+/* Landscape phones and down */
+@media (min-width: 480px) and (max-width: 767px) {
+    .container {
+        .navbar {
+            width: 100%;
+            margin: 0;
+            .right-side input{
+                float: left;
+            }
+        }
+	}
+}
+
 /* Landscape phone to portrait tablet */
-@media (max-width: 767px) {
+@media (min-width: 768px) and (max-width: 1065px) {
 	.container {
         .navbar {
-            .right-side {
+            width: 100%;
+            margin: 0;
+            .right-side input{
                 float: left;
-
-                .search {
-                    display: none;
-                }
             }
         }
 	}

@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { UserService }       from '../services/user.service';
-import { ContentService }       from '../services/content.service';
+import { AuthService }       from '../services/auth.service';
+import { ContentService }    from '../services/content.service';
 import { ActivatedRoute }    from '@angular/router';
 import { AppSettings }       from '../appSettings';
 import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
+import { NgxSmartModalService } from 'ngx-smart-modal';
 
 @Component({
   selector: 'app-profile',
+  encapsulation: ViewEncapsulation.None,
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.less']
 })
@@ -20,16 +23,33 @@ export class ProfileComponent implements OnInit {
     constructor(private userService: UserService,
                 private route: ActivatedRoute,
                 private contentService: ContentService,
-                private sanitizer: DomSanitizer) { }
+                private sanitizer: DomSanitizer,
+                private authService: AuthService,
+                public ngxSmartModalService: NgxSmartModalService) { }
 
     ngOnInit() {
+        this.route.params.forEach(params => {
+            this.getUser();
+            this.getPosts();
+            this.verifyOwnProfile();
+        })
         this.user = {
             username: '',
             email: '',
             img: ''
         }
-        this.getUser();
-        this.getPosts();
+    }
+
+    injectDataIntoModal(obj: Object) {
+        console.log(obj);
+        obj['data']['date'] = obj['data']['date'].substring(0, 10);
+        this.ngxSmartModalService.setModalData(obj, 'imgModal', true);
+    }
+
+    verifyOwnProfile() {
+        if (this.authService.getUsername() == this.route.snapshot.paramMap.get('username')) {
+            return true;
+        }
     }
 
     getAvatar(filePath: string) {
@@ -42,14 +62,20 @@ export class ProfileComponent implements OnInit {
     }
 
     getPostsImage(posts: Object) {
+        this.postUrls = [];
         for (let key in posts) {
             var obj = posts[key];
-
-            console.log(obj);
             this.contentService.getPostsImage(obj['img'])
                 .then(blob => {
                     let urlCreator = window.URL;
-                    this.postUrls.push(this.sanitizer.bypassSecurityTrustUrl(urlCreator.createObjectURL(blob)));
+                    this.postUrls.push({
+                        url: this.sanitizer.bypassSecurityTrustUrl(urlCreator.createObjectURL(blob))
+                    });
+
+                    for (let key in this.postUrls) {
+                        let obj = this.postUrls[key];
+                        obj['data'] = posts[key];
+                    }
                 })
                 .catch(err => console.log(err));
         }

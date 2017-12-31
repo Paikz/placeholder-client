@@ -2,24 +2,49 @@
 <div class="main-container">
     <div class="profile-header">
         <img *ngIf='avatarUrl' [src]='avatarUrl'>
-        <h1>{{user.username}}</h1>
-        <p>{{user.email}}</p>
-        <!-- Upload Image -->
-        <label for="image-upload" class="custom-file-upload">
-             <i class="fa fa-cloud-upload"></i> <span>Upload Image</span>
-        </label>
-        <input id="image-upload" type="file" (change)="postChange($event)" placeholder="Upload Post" accept=".png,.jpg" name="post">
+        <div class="profile-info">
+            <h1>{{user.username}}</h1>
+            <p>{{user.email}}</p>
+            <p></p>
+            <p>Followers:</p>
+            <p>Following:</p>
+        </div>
 
-        <!-- Change Avatar -->
-        <label for="avatar-upload" class="custom-file-upload">
-             <i class="fa fa-cloud-upload"></i> <span>Change Avatar</span>
-        </label>
-        <input id="avatar-upload" type="file" (change)="avatarChange($event)" placeholder="Upload Avatar" accept=".png,.jpg" name="avatar">
+        <div class="upload-btn-container">
+            <!-- Upload Image -->
+            <ng-container *ngIf="verifyOwnProfile()">
+                <label for="image-upload" class="custom-file-upload">
+                    <i class="fa fa-cloud-upload"></i> <span>Upload Image</span>
+                </label>
+                <input id="image-upload" type="file" (change)="postChange($event)" placeholder="Upload Post" accept=".png,.jpg" name="post">
+
+            <!-- Change Avatar -->
+                <label for="avatar-upload" class="custom-file-upload">
+                    <i class="fa fa-cloud-upload"></i> <span>Change Avatar</span>
+                </label>
+                <input id="avatar-upload" type="file" (change)="avatarChange($event)" placeholder="Upload Avatar" accept=".png,.jpg" name="avatar">
+            </ng-container>
+        </div>
 
     </div>
     <div class="gallery">
         <div class="flex-image" *ngFor='let img of postUrls'>
-            <img *ngIf="img" [src]='img'>
+            <a (click)="injectDataIntoModal(img); imgModal.open()"> <img *ngIf="img" [src]='img.url'> </a>
         </div>
     </div>
- </div>
+
+    <div class="custom-modal">
+        <!-- Modal -->
+        <ngx-smart-modal #imgModal [identifier]="'imgModal'" [closable]="false">
+            <div *ngIf="imgModal.hasData()">
+                <img class='small-avatar' *ngIf='avatarUrl' [src]='avatarUrl'>
+                <p>{{imgModal.getData().data.username}}</p>
+                 -
+                <p>Created: {{imgModal.getData().data.date}}</p>
+                <p class="desc">{{imgModal.getData().data.description}}</p>
+                <img class="modal-image" [src]='imgModal.getData().url'>
+            </div>
+        </ngx-smart-modal>
+    </div>
+
+</div>

@@ -1,12 +1,15 @@
 import { BrowserModule }                            from '@angular/platform-browser';
+import { BrowserAnimationsModule }                  from '@angular/platform-browser/animations';
 import { RouterModule }                             from '@angular/router';
 import { NgModule }                                 from '@angular/core';
 import { HttpModule, Http, RequestOptions }         from '@angular/http';
 import { FormsModule }                              from '@angular/forms';
 import { ReactiveFormsModule }                      from '@angular/forms';
 
+
 //Custom modules
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
+import { NgxSmartModalModule, NgxSmartModalService } from 'ngx-smart-modal';
 
 //Guards
 import { AuthGuard }            from './guards/auth.guard';
@@ -43,9 +46,11 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxSmartModalModule.forRoot(),
     RouterModule.forRoot([
         {
             path: '',
