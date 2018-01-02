@@ -1,4 +1,6 @@
 @imgWidth: 280px;
+@tempwidth: 100vw;
+
 .main-container {
     display: flex;
 
@@ -32,6 +34,21 @@
         input[type="file"] {
             display: none;
         }
+
+        .btn {
+    		width: 100%;
+            max-width: 150px;
+    	    padding: 4px 6px;
+    	    margin: 4px 0;
+    	    display: inline-block;
+    	    box-sizing: border-box;
+    		border-radius: 4px;
+    		background-color: #3897f0;
+    		color: #fff;
+    		border: none;
+    		cursor: pointer;
+    	}
+
         .custom-file-upload {
             border: 1px solid #ccc;
             display: inline-block;
@@ -70,6 +87,20 @@
     .custom-modal ngx-smart-modal {
         display: inline-block;
         max-width: 100%;
+
+        .custom-file-upload {
+            border: 1px solid #ccc;
+            display: inline-block;
+            padding: 4px 6px;
+            cursor: pointer;
+            width: 20%;
+
+            span {
+                font-size: 13px;
+                font-family: "Open Sans", sans-serif;
+            }
+        }
+
         .small-avatar {
             display: inline-block;
             width: 50px;
@@ -96,8 +127,14 @@
             width: 100%;
         }
     }
+
+    .errRoute {
+        margin: 0 auto;
+        font-family: "Open Sans", sans-serif;
+        font-weight: 600;
+
+    }
 }
-@tempwidth: 100vw;
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 1px) and (max-width: 767px) {
     .main-container {

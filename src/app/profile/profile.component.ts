@@ -15,6 +15,7 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 })
 export class ProfileComponent implements OnInit {
 
+    showErrRoute: Boolean = false;
     user: Object;
     userPosts: Object;
     avatarUrl: SafeUrl;
@@ -33,17 +34,37 @@ export class ProfileComponent implements OnInit {
             this.getPosts();
             this.verifyOwnProfile();
         })
-        this.user = {
-            username: '',
-            email: '',
-            img: ''
-        }
     }
 
     injectDataIntoModal(obj: Object) {
         console.log(obj);
         obj['data']['date'] = obj['data']['date'].substring(0, 10);
         this.ngxSmartModalService.setModalData(obj, 'imgModal', true);
+    }
+
+    isFollowed(user: Object) {
+        return (user['followers'].indexOf(this.authService.getUsername()) > -1);
+    }
+
+    unfollow(username: string) {
+        this.userService.unfollow(username)
+            .then(res => this.getUser())
+            .catch(err => console.log(err));
+    }
+
+    follow(username: string) {
+        this.userService.follow(username)
+            .then(res => this.getUser())
+            .catch(err => console.log(err));
+    }
+
+    deletePost(id: string) {
+        this.contentService.deletePost(id)
+            .then(res => {
+                console.log(res);
+                this.getPosts();
+            })
+            .catch(err => console.log(err));
     }
 
     verifyOwnProfile() {
@@ -116,6 +137,9 @@ export class ProfileComponent implements OnInit {
     }
 
     getUser() {
+        this.user = null;
+        this.showErrRoute = false;
+        this.avatarUrl = null;
         const username = this.route.snapshot.paramMap.get('username');
         this.userService.getUser(username)
             .then( res => {
@@ -124,7 +148,9 @@ export class ProfileComponent implements OnInit {
                     this.getAvatar(this.user['img']);
                 }
             })
-            .catch( err => console.log(err));
+            .catch( err => {
+                this.showErrRoute = true;
+            });
     }
 
 }

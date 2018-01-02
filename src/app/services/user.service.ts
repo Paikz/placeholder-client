@@ -25,6 +25,26 @@ export class UserService {
             .catch(this.handleError);
     }
 
+    follow(username: string) {
+        let params = new URLSearchParams();
+        params.append('username', username);
+        params.append('id', this.authService.getId());
+        return this.authHttp.put(AppSettings.API_ENDPOINT + '/follow', params)
+            .toPromise()
+            .then(response => response.json())
+            .catch(this.handleError)
+    }
+
+    unfollow(username: string) {
+        let params = new URLSearchParams();
+        params.append('username', username);
+        params.append('id', this.authService.getId());
+        return this.authHttp.put(AppSettings.API_ENDPOINT + '/unfollow', params)
+            .toPromise()
+            .then(response => response.json())
+            .catch(this.handleError)
+    }
+
     createUser(user: Object): Promise<any[]> {
         let params = new URLSearchParams();
         params.append('email', user["email"]);

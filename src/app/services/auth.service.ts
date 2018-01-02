@@ -20,6 +20,14 @@ export class AuthService {
         }
     }
 
+    getId() {
+        if (this.loggedIn()) {
+            return this.jwtHelper.decodeToken(localStorage.getItem("token")).id;
+        } else {
+            return "";
+        }
+    }
+
     getUsername() {
         if (this.loggedIn()) {
             return this.jwtHelper.decodeToken(localStorage.getItem("token")).username;

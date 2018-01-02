@@ -25,11 +25,21 @@ export class ContentService {
           .catch(this.handleError);
     }
 
+    deletePost(id: string): Promise<any[]>{
+        let params = new URLSearchParams();
+        params.append('id', this.authService.getId());
+        return this.authHttp.post(AppSettings.API_ENDPOINT + `/posts/${id}`, params)
+            .toPromise()
+            .then(response => response.json())
+            .catch(this.handleError);
+    }
+
     uploadAvatar(fileList: FileList): Promise<any[]> {
         let file: File = fileList[0];
         let formData:FormData = new FormData();
         formData.append('avatar', file, file.name);
         formData.append('username', this.authService.getUsername());
+        formData.append('id', this.authService.getId());
         return this.authHttp.patch(AppSettings.API_ENDPOINT + '/upload/avatar', formData)
             .toPromise()
             .then(res => res.json())
@@ -42,6 +52,7 @@ export class ContentService {
         formData.append('post', file, file.name);
         formData.append('username', this.authService.getUsername());
         formData.append('description', desc);
+        formData.append('id', this.authService.getId());
         return this.authHttp.post(AppSettings.API_ENDPOINT + '/upload/post', formData)
             .toPromise()
             .then(res => res.json())

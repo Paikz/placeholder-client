@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService }       from '../services/user.service';
+import { AuthService }       from '../services/auth.service';
 import { Router }            from '@angular/router';
 
 @Component({
@@ -11,7 +12,7 @@ export class RegisterComponent implements OnInit {
 
   user: Object = {};
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private authService: AuthService) { }
 
   createUser() {
     this.userService.createUser(this.user)
@@ -23,6 +24,9 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
+      if(this.authService.loggedIn()) {
+        this.router.navigate(['']);
+      }
   }
 
 }
