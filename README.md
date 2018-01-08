@@ -8,7 +8,7 @@ A social media application where users can share their scenery with each other.
 
 ### Linked Repositories
 
-Server repository can be found here: https://github.com/Paikz/placeholder-server  
+Server repository can be found [here](https://github.com/Paikz/scenery_server) 
 
 ### Technology Used
 
