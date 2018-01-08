@@ -12,6 +12,22 @@ export class AuthService {
         return tokenNotExpired("token");
     }
 
+    getFollowers() {
+        if (this.loggedIn()) {
+            return this.jwtHelper.decodeToken(localStorage.getItem("token")).followers;
+        } else {
+            return [];
+        }
+    }
+
+    getFollowing() {
+        if (this.loggedIn()) {
+            return this.jwtHelper.decodeToken(localStorage.getItem("token")).following;
+        } else {
+            return [];
+        }
+    }
+
     getCurrentUser() {
         if (this.loggedIn()) {
             return this.jwtHelper.decodeToken(localStorage.getItem("token"));

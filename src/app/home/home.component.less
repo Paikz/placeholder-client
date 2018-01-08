@@ -1,4 +1,87 @@
-.container {
-    width: 70%;
-    margin: 80px auto 0 auto;
+.main-container {
+    width: 600px;
+    max-width: 600px;
+    display: block;
+
+    .post-container {
+        border: 1px solid rgba(0,0,0,.0975);
+        border-bottom: none;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto;
+        margin-bottom: 20px;
+
+        img {
+            max-width: 100%;
+            width: 100%;
+            display: block;
+        }
+
+        .post-header {
+            padding: 1em;
+            border-bottom: 1px solid rgba(0,0,0,.0975);
+            a {
+                margin: 0;
+                font-family: "Roboto", sans-serif;
+                font-weight: 600;
+                font-size: 16px;
+                text-transform: capitalize;
+                text-decoration: none;
+                color: #000;
+            }
+
+            a:link, a:visited, a:hover, a:active {
+                color: #000;
+            }
+
+            p {
+                font-family: "Open Sans", sans-serif;
+                display: block;
+                font-style: italic;
+                font-weight: 300;
+                margin: 0.5em 0 0 0;
+            }
+
+            span {
+                font-family: "Open Sans", sans-serif;
+                font-weight: 100;
+                font-size: 0.7em;
+            }
+        }
+    }
+}
+
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 1px) and (max-width: 767px) {
+    .main-container {
+        width: 100%;
+        .post-container {
+            margin-bottom: 10px;
+            width: 100%;
+        }
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 1065px) {
+    .main-container {
+        width: 100%;
+        .post-container {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width 1199px) {
+    .main-container {
+        width: 100%;
+        .post-container {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    }
 }

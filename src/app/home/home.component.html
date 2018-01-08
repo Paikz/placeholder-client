@@ -1,6 +1,13 @@
 <app-navbar></app-navbar>
 
 <div class="main-container">
-    <a routerLink="/chat"> Go to chat </a>
-    <br>
+    <div class="post-container" *ngFor='let img of postUrls'>
+        <div class="post-header">
+            <a routerLink="/{{img.data.username}}">{{img.data.username}}</a>
+            <p>{{img.data.description}}</p>
+            <span>{{img.data.date | slice:0:10}} </span>
+            <span>{{img.data.date | slice:11:16}} </span>
+        </div>
+        <img [src]="img.url">
+    </div>
 <div>

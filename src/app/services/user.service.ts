@@ -25,6 +25,13 @@ export class UserService {
             .catch(this.handleError);
     }
 
+    getPostsFromFollowing(username: string): Promise<any[]> {
+        return this.authHttp.get(AppSettings.API_ENDPOINT + `/posts/following/${username}`)
+            .toPromise()
+            .then( response => response.json())
+            .catch(this.handleError)
+    }
+
     follow(username: string) {
         let params = new URLSearchParams();
         params.append('username', username);

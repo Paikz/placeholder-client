@@ -36,8 +36,20 @@ export class ProfileComponent implements OnInit {
         })
     }
 
+    sortPostUrls() {
+        this.postUrls.sort((a, b) => {
+            let d1 = Date.parse(a['data'].date);
+            let d2 = Date.parse(b['data'].date);
+            if (d1 > d2)
+                return -1;
+            else if (d1 < d2)
+                return 1;
+            else
+                return 0;
+        });
+    }
+
     injectDataIntoModal(obj: Object) {
-        console.log(obj);
         obj['data']['date'] = obj['data']['date'].substring(0, 10);
         this.ngxSmartModalService.setModalData(obj, 'imgModal', true);
     }
@@ -61,7 +73,6 @@ export class ProfileComponent implements OnInit {
     deletePost(id: string) {
         this.contentService.deletePost(id)
             .then(res => {
-                console.log(res);
                 this.getPosts();
             })
             .catch(err => console.log(err));
@@ -85,19 +96,17 @@ export class ProfileComponent implements OnInit {
     getPostsImage(posts: Object) {
         this.postUrls = [];
         for (let key in posts) {
-            var obj = posts[key];
+            const obj = posts[key];
             this.contentService.getPostsImage(obj['img'])
-                .then(blob => {
+                .then(((obj, blob) => {
                     let urlCreator = window.URL;
                     this.postUrls.push({
-                        url: this.sanitizer.bypassSecurityTrustUrl(urlCreator.createObjectURL(blob))
+                        url: this.sanitizer.bypassSecurityTrustUrl(urlCreator.createObjectURL(blob)),
+                        data: obj
                     });
-
-                    for (let key in this.postUrls) {
-                        let obj = this.postUrls[key];
-                        obj['data'] = posts[key];
-                    }
+                    this.sortPostUrls();
                 })
+                .bind(this, obj))
                 .catch(err => console.log(err));
         }
     }
