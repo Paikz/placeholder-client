@@ -5,15 +5,18 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start_forDocker":"ng serve --host 0.0.0.0",
     "build": "ng build",
     "test": "ng test -cc --watch=false",
     "test:ci": "ng test --browser ChromeHeadlessCI -cc -sr --watch=false",
-    "test-node9": "docker-compose run node9",
-    "test-node8": "docker-compose run node8",
-    "test-node6": "docker-compose run node6",
+    "test-node9": "docker-compose run test-node9",
+    "test-node8": "docker-compose run test-node8",
+    "test-node6": "docker-compose run test-node6",
     "report-codecov": "nyc report --reporter=json && codecov -f coverage/*.json",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "stop-docker": "docker-compose down",
+    "start-docker": "docker-compose up node9"
   },
   "private": true,
   "dependencies": {
