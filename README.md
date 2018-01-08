@@ -13,14 +13,14 @@ Server repository can be found here: https://github.com/Paikz/placeholder-server
 ### Technology Used
 
 **Client:**  
-Angular
+`Angular`  
 A clientside JavaScript / Typescript framework used for developing web applications. I've used Angular in the past which made the choice easier. Angular's CLI is a fast and efficient way to start a project with most necessities included right from the start.
 
 **Server:**    
-Node Express  
+`Node Express`  
 The framework we started out with and learned throughout the course. I saw no point in switching it out. It works perfectly with Angular and mongodb. I use the server as a REST API which Express functions very well as.
 
-Mongodb & Mongoose  
+`Mongodb & Mongoose`  
 Mongodb and Mongoose, Node Express and Angular goes hand in hand. This is what is called a MEAN stack. With mongoose we create schemas which works as models for the objects we want to put in the database. This makes the process of CRUD using the models easy. As we tend to use objects and models in Angular, Mongodb and Mongoose is a good fit.
 
 **Opinions & Experiences:**  
@@ -97,6 +97,7 @@ The most helpful of the three is definitely travis combined with codecov. Scruti
 
 ### Real-time feature
 
+coming soon
 
 ### Database implementation
 
@@ -105,3 +106,5 @@ This project uses mongodb as database. Using Angular and Express, using Mongoose
 Relational databases has their time and place as well even if it is not used in this project. Personally I think they would fit this project pretty well, but using another front end framework. Angular works hand in hand with mongodb and there is probably a framework working well with relational databases. You just have to choose the right tech for the right job.
 
 ### Modules
+
+coming soon
