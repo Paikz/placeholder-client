@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/Paikz/placeholder-client.svg?branch=master)](https://travis-ci.org/Paikz/placeholder-client)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Paikz/placeholder-client/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Paikz/placeholder-client/?branch=master)
-[![codecov](https://codecov.io/gh/Paikz/placeholder-client/branch/master/graph/badge.svg)](https://codecov.io/gh/Paikz/placeholder-client)
+[![Build Status](https://travis-ci.org/Paikz/scenery.svg?branch=master)](https://travis-ci.org/Paikz/scenery)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Paikz/scenery/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Paikz/scenery/?branch=master)
+[![codecov](https://codecov.io/gh/Paikz/scenery/branch/master/graph/badge.svg)](https://codecov.io/gh/Paikz/scenery)
 
 # Scenery
 
@@ -8,7 +8,7 @@ A social media application where users can share their scenery with each other.
 
 ### Linked Repositories
 
-Server repository can be found [here](https://github.com/Paikz/scenery_server) 
+Server repository can be found [here](https://github.com/Paikz/scenery_server)
 
 ### Technology Used
 
