@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule }       from '@angular/forms';
 import { UserService }       from '../services/user.service';
+import { AuthService }       from '../services/auth.service';
 import { RegisterComponent } from './register.component';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
 import { HttpModule, Http, RequestOptions } from '@angular/http';
@@ -18,7 +19,7 @@ describe('RegisterComponent', () => {
     TestBed.configureTestingModule({
       imports: [FormsModule, HttpModule, RouterTestingModule],
       declarations: [ RegisterComponent ],
-      providers: [UserService,
+      providers: [UserService,AuthService,
       {
           provide: AuthHttp,
           useFactory: authHttpServiceFactory,
