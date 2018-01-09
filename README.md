@@ -108,3 +108,8 @@ Relational databases has their time and place as well even if it is not used in 
 ### Modules
 
 coming soon
+
+### Articles
+
+I've written an article on this projects use of JWT tokens and how to implement them yourself with Angular + Express.
+[Link to article](https://docs.google.com/document/d/1cuP1ehnfkpFnzAmsi8Q3Un-19gesXRt-r5rGBzvYcHs/edit?usp=sharing)
