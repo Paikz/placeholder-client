@@ -4,7 +4,15 @@
 
 # Scenery
 
-A social media application where users can share their scenery with each other.  
+A social media application where users can share their scenery with each other.
+
+### How to use
+
+Due to the application not being 100% complete a guide on how to access things is useful.  
+
+* The first thing you should do is to create an account.
+* The default route shows the posts of the users you follow. This page is currently blank for new users. Follow another user with posts to fill this page.
+* There is currently no way to search for other users. Use usernames as a parameter in the url to find a specific user. Example: `/testuser1`
 
 ### Linked Repositories
 
