@@ -49,8 +49,9 @@ The basic requirements Scenery have specified.
 | 9  | Responsive Design    | The design of the client should adapt to fit the screen size                  |
 | 10 | Follow user          | A user must be able to follow another user                                    |
 | 11 | Unfollow user        | A user must be able to unfollow another user if already followed              |
-| 12 | Private message user | A user must be able to private message another user                           |
+| 12 | Private message user | A user must be able to private message another user                           |  
 
+Not yet implemented: Requirement #12  
 
 ### Installation and starting up a server
 
@@ -78,7 +79,7 @@ Running above command will create a `/coverage` folder in the root project. Use 
 * Mocha
 * Supertest
 
-The client side tech for testing is installed and configured when creating a new project with the Angular CLI. This made it very easy to start unit testing right off the bat. Due to time constraints not a lot of time has been spent unit testing. I found it particularly hard to test websockets and http service calls. On the server side I decided to use Mocha as test framework. Supertest is used to make HTTP assertions.
+The client side tech for testing is installed and configured when creating a new project with the Angular CLI. This made it very easy to start unit testing right off the bat. Due to time constraints not a lot of time has been spent unit testing. I found it particularly hard to test websockets and http service calls. On the server side I decided to use Mocha as test framework. Supertest is used to make HTTP assertions. Due to the big amount of code on the client side my goal was 50% coverage. I did not have the time to focus on unit testing the backend.
 
 
 ### Running unit tests with different node versions in docker
@@ -97,7 +98,9 @@ The most helpful of the three is definitely travis combined with codecov. Scruti
 
 ### Real-time feature
 
-coming soon
+Due to the scale of this project requirement #12 was not completely implemented. There is a real-time aspect in the route `/chat` but it is a global chat room for now. The thought was to be able to send private messages to other users in real-time and be able to see previous messages sent.
+
+The current chat implemented is built with Angulars native websockets. The backend uses ws for the websocket. Ws and Angular's native websocket are fairly similar. The principle behind using them are simple enough to get into quickly and I see the potential there is to use them for real-time components. The tech is stable and works well. The only flaw I've noticed so far is the difficulty of unit testing the components.
 
 ### Database implementation
 
@@ -107,4 +110,11 @@ Relational databases has their time and place as well even if it is not used in 
 
 ### Modules
 
-coming soon
+[express-jwt-verify-middleware](https://github.com/Paikz/express-jwt-verify-middleware) is a middleware component used on the backend Express server. It verifies if incoming requests has a jwt token or not and if it is valid. If the token is valid the decoded information will be forwarded for further use in the route with the `.decoded` property.  
+
+npm is a necessity when using Angular but even if I could use another package manager I would still use npm. It is easy to understand, fast and reliable. Being able to install a package local or global is handy and publishing your own modules only takes a few minutes.
+
+### Articles
+
+I've written an article on this projects use of JWT tokens and how to implement them yourself with Angular + Express.  
+[Link to article](https://docs.google.com/document/d/1cuP1ehnfkpFnzAmsi8Q3Un-19gesXRt-r5rGBzvYcHs/edit?usp=sharing)

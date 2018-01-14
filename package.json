@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start_forDocker":"ng serve --host 0.0.0.0",
+    "start_forDocker": "ng serve --host 0.0.0.0",
     "build": "ng build",
     "test": "ng test -cc --watch=false",
     "test:ci": "ng test --browser ChromeHeadlessCI -cc -sr --watch=false",
