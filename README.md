@@ -49,9 +49,10 @@ The basic requirements Scenery have specified.
 | 9  | Responsive Design    | The design of the client should adapt to fit the screen size                  |
 | 10 | Follow user          | A user must be able to follow another user                                    |
 | 11 | Unfollow user        | A user must be able to unfollow another user if already followed              |
-| 12 | Private message user | A user must be able to private message another user                           |  
+| 12 | Private message user | A user must be able to private message another user                           |
+| 13 | Search for users     | A user must be able to search for other users                                 |
 
-Not yet implemented: Requirement #12  
+Not yet implemented: Requirement #12 & #13
 
 ### Installation and starting up a server
 
